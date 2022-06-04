@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_04_190339) do
+ActiveRecord::Schema.define(version: 2022_06_04_202254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,12 +43,33 @@ ActiveRecord::Schema.define(version: 2022_06_04_190339) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "client_id", null: false
+    t.bigint "garage_id", null: false
+    t.string "status"
+    t.date "initial_date"
+    t.date "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_bookings_on_client_id"
+    t.index ["garage_id"], name: "index_bookings_on_garage_id"
+  end
+
   create_table "garages", force: :cascade do |t|
     t.bigint "owner_id", null: false
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["owner_id"], name: "index_garages_on_owner_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "booking_id", null: false
+    t.text "comment"
+    t.integer "rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["booking_id"], name: "index_reviews_on_booking_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,5 +87,8 @@ ActiveRecord::Schema.define(version: 2022_06_04_190339) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookings", "garages"
+  add_foreign_key "bookings", "users", column: "client_id"
   add_foreign_key "garages", "users", column: "owner_id"
+  add_foreign_key "reviews", "bookings"
 end
