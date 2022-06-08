@@ -1,4 +1,5 @@
 class GaragesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
   before_action :find_garage, only: %i[show edit destroy update]
 
   def index
