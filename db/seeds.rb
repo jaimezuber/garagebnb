@@ -9,9 +9,8 @@ require "open-uri"
 
 foto_joel = URI.open('https://st.depositphotos.com/1041088/4500/i/600/depositphotos_45004175-stock-photo-empty-garage.jpg')
 foto_jaime = URI.open('https://st2.depositphotos.com/3418487/6470/i/600/depositphotos_64704175-stock-photo-background.jpg')
-foto_maxi= URI.open('https://static8.depositphotos.com/1524415/1033/i/600/depositphotos_10339645-stock-photo-clean-garage.jpg')
+foto_maxi = URI.open('https://static8.depositphotos.com/1524415/1033/i/600/depositphotos_10339645-stock-photo-clean-garage.jpg')
 foto_luca = URI.open('https://static7.depositphotos.com/1138869/775/i/600/depositphotos_7755045-stock-photo-underground-parking.jpg')
-
 
 usuario1 = User.new(full_name: 'joel', email: 'joel@gmail.com', password: 'joelsito')
 if usuario1.save
