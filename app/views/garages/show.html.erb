@@ -1,2 +1,24 @@
-<h1>Garages#show</h1>
-<p>Find me in app/views/garages/show.html.erb</p>
+<div class= "container">
+  <div>
+  <h1><%= garages.location %></h1>
+  </div>
+
+  <%= cl_image_tag(garages.photo,
+      width: 400, height: 300, crop: :fill) %>
+      <%# ver esto %>
+
+  <div class=>
+  <h2><%= garages.owner_id %></h2>
+  </div>
+
+
+  <div>
+    <%= month_calendar do |date| %>
+      <%= date %>
+        <% end %>
+  </div>
+
+  <%= link_to "Reservar", "garage_path" %>
+  <%# chequear ruta %>
+
+</div>
