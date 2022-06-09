@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
 
-  before_action :set_booking, only: [:edit, :update, :destroy, :accept_booking]
+  before_action :set_booking, only: [:edit, :update, :destroy, :accept_booking, :accept_booking]
 
   def new
     @booking = Booking.new
@@ -36,7 +36,11 @@ class BookingsController < ApplicationController
   end
 
   def accept_booking
-    @booking.status = 'accepted'
+    @booking.status = 'confirmed'
+  end
+
+  def cancel_booking
+    @booking.status = 'canceled'
   end
 
   private
