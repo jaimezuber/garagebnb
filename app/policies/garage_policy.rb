@@ -19,10 +19,10 @@ class GaragePolicy < ApplicationPolicy
   end
 
   def update?
-    user == record.user
+    user == record.owner
   end
 
   def destroy?
-    user == record.user
+    user == record.owner
   end
 end
