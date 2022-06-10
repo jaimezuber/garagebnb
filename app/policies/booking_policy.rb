@@ -9,4 +9,8 @@ class BookingPolicy < ApplicationPolicy
   def create?
     return true
   end
+
+  def update?
+    record.client == user
+  end
 end
