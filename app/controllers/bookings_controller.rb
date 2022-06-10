@@ -1,18 +1,20 @@
 class BookingsController < ApplicationController
 
-  before_action :set_booking, only: [:edit, :update, :destroy, :accept_booking, :accept_booking]
+  before_action :set_booking, only: %i[edit update destroy accept_booking accept_booking]
 
   def new
     @booking = Booking.new
-    @garage = Garage.find[params[:garage_id]]
+    @garage = Garage.find(params[:garage_id])
+    authorize @booking
   end
 
   def create
     @booking = Booking.new(rev_params)
-    @garage = Garage.find[params[:garage_id]]
+    @garage = Garage.find(params[:garage_id])
     @client = current_user
     @booking.garage = @garage
     @booking.client = @client
+    authorize @booking
     if @booking.save
       redirect_to garage_path(@garage)
     else
@@ -50,6 +52,7 @@ class BookingsController < ApplicationController
   end
 
   def set_booking
-    Booking.find(params[:id])
+    @booking = Booking.find(params[:id])
+    authorize @booking
   end
 end
