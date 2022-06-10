@@ -44,6 +44,6 @@ class GaragesController < ApplicationController
   end
 
   def find_garage
-    @garage = garage.find(params[:id])
+    @garage = Garage.find(params[:id])
   end
 end
