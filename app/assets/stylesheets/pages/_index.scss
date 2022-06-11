@@ -1,6 +1,8 @@
 // Import page-specific CSS files here.
 @import "home";
 
+@import "show";
+
 .card a {
   text-decoration: none;
 }
@@ -14,3 +16,4 @@
 .card {
   width: auto;
 }
+
