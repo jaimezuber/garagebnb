@@ -2,6 +2,16 @@ class BookingsController < ApplicationController
 
   before_action :set_booking, only: %i[edit update destroy accept_booking accept_booking]
 
+  def index
+    @bookings_owner = policy_scope(Booking).select do |booking|
+      booking.garage.owner == current_user
+    end
+
+    @bookings_client = policy_scope(Booking).select do |booking|
+      booking.client == current_user
+    end
+  end
+
   def new
     @booking = Booking.new
     @garage = Garage.find(params[:garage_id])
@@ -39,10 +49,12 @@ class BookingsController < ApplicationController
 
   def accept_booking
     @booking.status = 'confirmed'
+    redirect_to bookings_path
   end
 
-  def cancel_booking
-    @booking.status = 'canceled'
+  def decline_booking
+    @booking.status = 'declined'
+    redirect_to bookings_path
   end
 
   private

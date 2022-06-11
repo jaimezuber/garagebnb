@@ -1,0 +1,22 @@
+<h1>Aca va la vista de Bookings que sos owner</h1>
+<% @bookings_owner.each do |booking| %>
+  <%= booking %>
+<% end %>
+<h1>Aca va la vista de Bookings que sos client</h1>
+<% @bookings_client.each do |booking| %>
+  <%= booking %>
+<% end %>
+
+
+<% #con respecto a los bookings_owner %>
+
+<% # La path para acceptar un booking es :accept_path %>
+<% # La path para declinar un booking es :decline_path %>
+
+
+
+
+<% #con respecto a los bookings_client %>
+
+<% # La path para editar un booking es : edit_booking_path(booking) %>
+<% # La path para eliminar un booking es : booking_path(booking), method: :delete, data: { confirm: "Are you sure?" }%>
