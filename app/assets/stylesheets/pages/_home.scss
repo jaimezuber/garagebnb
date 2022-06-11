@@ -1,4 +1,40 @@
 // Specific CSS for your home-page
+
+// .big-container {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+h1 {
+  color: white;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+h2 {
+  color: white;
+  font-size: larger;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+
+}
+
+.sign-up {
+  text-align: end;
+}
+
+.cont {
+  margin: 0;
+}
+
 a {
   margin: 10px;
+}
+
+.image-back {
+  background-image: none;
+}
+
+.bk-image {
+  background-image: url(asset_path('parking.jpg'));
+  height:100vh;
 }

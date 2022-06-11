@@ -1,3 +1,16 @@
-<h1>GarageBNB</h1>
-<p>Do you wanna park your car? You're in the right platform!</p>
-<p><%= link_to "Sign up", new_user_registration_path, :class => 'btn btn-primary' %><%= link_to "Watch some garages", garages_path, :class => "btn btn-primary" %></p>
+<body class=bk-image>
+  <div class=sign-up>
+    <%= link_to "Sign up", new_user_registration_path, :class => 'btn btn-primary' %>
+  </div>
+    <div class=cont>
+      <div style="text-align:center">
+        <div class="banner text-align-center justify-content-center">
+          <h2>Do you wanna park your car? You're in the right platform!</h2>
+          <h1>GarageBNB</h1>
+      </div>
+      <div class=button>
+        <%= link_to "Watch some garages", garages_path, :class => "btn btn-success" %>
+      </div>
+    </div>
+    </div>
+</body>

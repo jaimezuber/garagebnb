@@ -1,0 +1,13 @@
+.cont {
+  display: flex;
+  justify-content: center;
+}
+
+.banner {
+  width: 1000px;
+  height: 500px;
+  background-image: url(asset_path('landing.jpg'));
+  background-size: cover;
+  border-radius: 20px;
+  border-style:inset
+}
