@@ -14,4 +14,16 @@ class BookingPolicy < ApplicationPolicy
   def update?
     record.client == user
   end
+
+  def destroy?
+    record.client == user
+  end
+
+  def decline_booking?
+    record.garage.owner == user
+  end
+
+  def accept_booking?
+    record.garage.owner == user
+  end
 end
