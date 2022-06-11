@@ -1,2 +1,18 @@
-<h1>Garages#show</h1>
-<p>Find me in app/views/garages/show.html.erb</p>
+<div class="super-big-location-photo">
+  <div class= "big-location-photo">
+    <div class="location-photo">
+        <h1><%= @garage.location %></h1>
+        <div class = "photo" >
+        <%= cl_image_tag(@garage.photo.key,
+        width: 800, height: 400, crop: :fill)
+        %>
+        </div>
+    </div>
+
+    <div class="garage-description">
+      <h2><%= @garage.title %></h2>
+      <h3> <%= @garage.price %></h3>
+      <%= link_to "Reservar", "garage_path", class: "btn btn-success" %>
+    </div>
+  </div>
+</div>
