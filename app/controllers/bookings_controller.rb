@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
 
-  before_action :set_booking, only: %i[edit update destroy]
+  before_action :set_booking, only: %i[edit update destroy decline_booking accept_booking]
 
   def index
     @bookings_owner = policy_scope(Booking).select do |booking|
@@ -49,13 +49,14 @@ class BookingsController < ApplicationController
   end
 
   def accept_booking
-    raise
     @booking.status = 'confirmed'
+    @booking.save
     redirect_to bookings_path
   end
 
   def decline_booking
     @booking.status = 'declined'
+    @booking.save
     redirect_to bookings_path
   end
 

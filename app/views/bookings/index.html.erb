@@ -14,8 +14,8 @@
                     Hasta: <%= booking.end_date %>
                   </div>
                   <div class="card-footer d-flex">
-                    <%= link_to "Aceptar solicitud", :accept, :class => 'btn btn-success btn-sm' %>
-                    <%= link_to "Rechazar solicitud", :decline, :class => 'btn btn-danger btn-sm' %>
+                    <%= link_to "Aceptar solicitud", accept_path(:id => booking.id), :class => 'btn btn-success btn-sm' %>
+                    <%= link_to "Rechazar solicitud", decline_path(:id => booking.id), :class => 'btn btn-danger btn-sm' %>
                   </div>
               </div>
           <% end %>
