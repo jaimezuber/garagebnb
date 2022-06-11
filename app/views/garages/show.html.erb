@@ -18,7 +18,7 @@
       <% else %>
         <% @bookings = @garage.bookings.select { |booking| current_user.bookings.include?(booking)} %>
         <% if @bookings != [] %>
-          <p><%= link_to "Reservar otra fecha", new_garage_booking_path(@garage), class: "btn btn-primary" %>Ya tienes una reserva!</p>
+          <p><%= link_to "Reservar otra fecha", new_garage_booking_path(@garage), class: "btn btn-primary" %>Ya tienes una reserva! </p>
         <% else %>
           <%= link_to "Reservar", new_garage_booking_path(@garage), class: "btn btn-primary" %>
         <% end %>
