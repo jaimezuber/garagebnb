@@ -48,6 +48,5 @@ class GaragesController < ApplicationController
   def find_garage
     @garage = Garage.find(params[:id])
     authorize @garage
-
   end
 end
