@@ -12,10 +12,16 @@
     <div class="garage-description">
       <h2><%= @garage.title %></h2>
       <h3> <%= @garage.price %></h3>
-      <% if current_user.bookings.any? {@garage.bookings.each} %>
-        <p>Ya tienes una reserva!<%= link_to "Reservar otra fecha", new_garage_booking_path(@garage), class: "btn btn-primary" %></p>
+      <% if @garage.owner == current_user %>
+        <%= link_to "Editar garage", edit_garage_path(@garage), :class => 'btn btn-outline-dark' %>
+        <%= link_to "Eliminar garage", garage_path(@garage), method: :delete, data: { confirm: "Are you sure?" }, :class => 'btn btn-outline-dark' %>
       <% else %>
-        <%= link_to "Reservar", new_garage_booking_path(@garage), class: "btn btn-primary" %>
+        <% @bookings = @garage.bookings.select { |booking| current_user.bookings.include?(booking)} %>
+        <% if @bookings != [] %>
+          <p>Ya tienes una reserva!<%= link_to "Reservar otra fecha", new_garage_booking_path(@garage), class: "btn btn-primary" %></p>
+        <% else %>
+          <%= link_to "Reservar", new_garage_booking_path(@garage), class: "btn btn-primary" %>
+        <% end %>
       <% end %>
     </div>
   </div>
