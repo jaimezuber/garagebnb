@@ -1,22 +1,70 @@
-<h1>Aca va la vista de Bookings que sos owner</h1>
-<% @bookings_owner.each do |booking| %>
-  <%= booking %>
-<% end %>
-<h1>Aca va la vista de Bookings que sos client</h1>
-<% @bookings_client.each do |booking| %>
-  <%= booking %>
-<% end %>
+<div class="container">
+  <div class="container" id="my_garage_bookings">
+    <% if !current_user.garages.empty? %>
+      <h1>Solicitudes</h1>
+      <div class="row">
+        <% if !@bookings_owner.empty? %>
+          <% @bookings_owner.each do |booking| %>
+            <% if booking.status == "standby" %>
+            <div class="card m-3">
+                  <div class="card-title">
+                    Garage: <%= booking.garage.title %>
+                  </div>
+                  <div class="card-body">
+                    Desde: <%= booking.initial_date%>
+                    Hasta: <%= booking.end_date %>
+                  </div>
+                  <div class="card-footer d-flex">
+                    <%= link_to "Aceptar solicitud", accept_path(:id => booking.id), :class => 'btn btn-success btn-sm' %>
+                    <%= link_to "Rechazar solicitud", decline_path(:id => booking.id), :class => 'btn btn-danger btn-sm' %>
+                  </div>
+              </div>
+              <% elsif booking.status == 'confirmed' %>
+                <%= "Booking has been confirmed" %>
+              <% else %>
+                <%= "Booking canceled" %>
+            <% end %>
+          <% end %>
+          <% else %>
+          <%= "No tenes solicitudes de booking todavía" %>
+        <% end %>
+    <% end %>
+    </div>
+  </div>
+  <div class="container" id="my_client_bookings">
+    <h1>Mis bookings</h1>
+    <div class="row">
+      <% if !@bookings_client.empty? %>
+          <% @bookings_client.each do |booking| %>
+            <div class="card m-3">
+              <div class="card-title">
+                Garage: <%= booking.garage.title %>
+              </div>
+              <div class="card-body">
+                Desde: <%= booking.initial_date%>
+                Hasta: <%= booking.end_date %>
+              </div>
+              <div class=“card-footer”>
+                <%= link_to "Editar booking", edit_booking_path(booking), :class => 'btn btn-outline-dark' %>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <%= "No tenes solicitudes de booking todavía" %>
+      <% end %>
+    </div>
+  </div>
 
-
-<% #con respecto a los bookings_owner %>
-
-<% # La path para acceptar un booking es :accept_path %>
-<% # La path para declinar un booking es :decline_path %>
+</div>
 
 
 
 
 <% #con respecto a los bookings_client %>
 
+<% #standby %>
+<% #standby
+#confirmed
+#declined %>
 <% # La path para editar un booking es : edit_booking_path(booking) %>
 <% # La path para eliminar un booking es : booking_path(booking), method: :delete, data: { confirm: "Are you sure?" }%>
