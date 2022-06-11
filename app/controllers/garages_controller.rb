@@ -39,6 +39,12 @@ class GaragesController < ApplicationController
     redirect_to garages_path
   end
 
+  def my_garages
+    @garages = policy_scope(Garage).select do |garage|
+      garage.owner == current_user
+    end
+  end
+
   private
 
   def rev_params
