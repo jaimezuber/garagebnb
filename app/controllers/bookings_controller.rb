@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
 
-  before_action :set_booking, only: %i[edit update destroy accept_booking accept_booking]
+  before_action :set_booking, only: %i[edit update destroy accept_booking decline_booking]
 
   def index
     @bookings_owner = policy_scope(Booking).select do |booking|
