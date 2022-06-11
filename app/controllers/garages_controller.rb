@@ -3,7 +3,7 @@ class GaragesController < ApplicationController
   before_action :find_garage, only: %i[show edit destroy update]
 
   def index
-    @garages = Garage.all
+    @garages = policy_scope(Garage).order(created_at: :desc)
   end
 
   def show; end
@@ -11,11 +11,13 @@ class GaragesController < ApplicationController
   def new
     @garage = Garage.new
     @owner = User.find(params[:id])
+    authorize @garage
   end
 
   def create
-    @garages = Garage.new(rev_params)
-    if @garages.save
+    @garage = Garage.new(rev_params)
+    authorize @garage
+    if @garage.save
       redirect_to garage_path(@garage)
     else
       render :new
@@ -32,7 +34,7 @@ class GaragesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @garage.destroy
     redirect_to garages_path
   end
@@ -45,5 +47,7 @@ class GaragesController < ApplicationController
 
   def find_garage
     @garage = Garage.find(params[:id])
+    authorize @garage
+
   end
 end

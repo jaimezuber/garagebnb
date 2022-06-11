@@ -1,1 +1,10 @@
-<h1>Aca va el formulario de new</h1>
+<div class='d-flex'>
+  <h1>New Booking</h1>
+  <p>Price <%= @garage.price %></p>
+</div>
+<%= simple_form_for [ @garage, @booking ] do |f| %>
+  <%= f.input :initial_date %>
+  <%= f.input :end_date %>
+
+  <%= f.submit "Submit Booking", class: "btn btn-primary" %>
+<% end %>

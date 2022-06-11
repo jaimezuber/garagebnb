@@ -1,3 +1,19 @@
 // Import page-specific CSS files here.
 @import "home";
+
 @import "show";
+
+.card a {
+  text-decoration: none;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 0 auto;
+}
+
+.card {
+  width: auto;
+}
+

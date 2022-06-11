@@ -1,2 +1,48 @@
-<h1>Garages#index</h1>
-<p>Find me in app/views/garages/index.html.erb</p>
+<div class=“banner-content”>
+  <h1>Compartí tu garage y ganemos todos</h1>
+</div>
+
+<div class = “container”>
+  <div class="row">
+    <% @garages.each do |garage| %>
+      <div class=“col-sm-3”>
+        <div class=card-deck>
+          <div class="d-inline">
+            <%= link_to garage_path(garage) do %>
+
+              <div class="card">
+              <div class="card-img-top">
+                <%= cl_image_tag(garage.photo.key,  height: 300, width: 400, crop: :fill) %>
+              </div>
+                <div class="card-body">
+                  <h4 class="card-title"><%= garage.title %></h4>
+                  <p class="card-text">
+                    Ubicación: <%= garage.location %>
+                  </p>
+                  <div class= "buttons"></div>
+                  <% if policy(garage).show? %>
+                    <%= link_to "Ver garage", garage_path(garage), :class => 'btn btn-outline-dark' %>
+                  <% end %>
+                  <% if policy(garage).edit? %>
+                    <%= link_to "Editar garage", edit_garage_path(garage), :class => 'btn btn-outline-dark' %>
+                  <% end %>
+                  <% if policy(garage).destroy? %>
+                    <%= link_to "Eliminar garage", garage_path(garage), method: :delete, data: { confirm: "Are you sure?" }, :class => 'btn btn-outline-dark' %>
+                  <% end %>
+
+                  <div class="card-footer">
+                    <div class="d-flex justify-content-around">
+                      <div>Precio: $<%= garage.price %></div>
+                      <div>Dueño: <%= garage.owner.full_name %></div>
+                    </div>
+                  </div>
+                </div>
+              </div> <!-- aca termina el card -->
+
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
