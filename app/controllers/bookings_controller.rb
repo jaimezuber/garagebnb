@@ -26,6 +26,7 @@ class BookingsController < ApplicationController
     @booking.client = @client
     authorize @booking
     if @booking.save
+      flash[:notice] = 'Ya tomamos tu reserva'
       redirect_to garage_path(@garage)
     else
       render :new

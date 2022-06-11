@@ -12,7 +12,11 @@
     <div class="garage-description">
       <h2><%= @garage.title %></h2>
       <h3> <%= @garage.price %></h3>
-      <%= link_to "Reservar", new_garage_booking_path(@garage), class: "btn btn-success" %>
+      <% if current_user.bookings.any? {@garage.bookings.each} %>
+        <p>Ya tienes una reserva!<%= link_to "Reservar otra fecha", new_garage_booking_path(@garage), class: "btn btn-primary" %></p>
+      <% else %>
+        <%= link_to "Reservar", new_garage_booking_path(@garage), class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </div>

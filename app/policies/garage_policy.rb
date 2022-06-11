@@ -25,4 +25,8 @@ class GaragePolicy < ApplicationPolicy
   def destroy?
     user == record.owner
   end
+
+  def my_garages?
+    return true
+  end
 end
