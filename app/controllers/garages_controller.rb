@@ -10,7 +10,7 @@ class GaragesController < ApplicationController
 
   def new
     @garage = Garage.new
-    @owner = User.find(params[:id])
+    @garage.owner = current_user
     authorize @garage
   end
 
