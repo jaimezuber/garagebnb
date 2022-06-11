@@ -12,7 +12,7 @@
     <div class="garage-description">
       <h2><%= @garage.title %></h2>
       <h3> <%= @garage.price %></h3>
-      <%= link_to "Reservar", "garage_path", class: "btn btn-success" %>
+      <%= link_to "Reservar", new_garage_booking_path(@garage), class: "btn btn-success" %>
     </div>
   </div>
 </div>
