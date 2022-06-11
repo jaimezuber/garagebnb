@@ -20,9 +20,31 @@
                   </div>
               </div>
               <% elsif booking.status == 'confirmed' %>
-                <%= "Booking has been confirmed" %>
+                <div class="card m-3">
+                    <div class="card-title">
+                      Garage: <%= booking.garage.title %>
+                    </div>
+                    <div class="card-body">
+                      Desde: <%= booking.initial_date%>
+                      Hasta: <%= booking.end_date %>
+                    </div>
+                    <div class="card-footer d-flex">
+                      <%= "Booking has been confirmed" %>
+                    </div>
+                </div>
               <% else %>
-                <%= "Booking canceled" %>
+                <div class="card m-3">
+                    <div class="card-title">
+                      Garage: <%= booking.garage.title %>
+                    </div>
+                    <div class="card-body">
+                      Desde: <%= booking.initial_date%>
+                      Hasta: <%= booking.end_date %>
+                    </div>
+                    <div class="card-footer d-flex">
+                      <%= "Booking canceled" %>
+                    </div>
+                </div>
             <% end %>
           <% end %>
           <% else %>
