@@ -10,15 +10,15 @@ class GaragesController < ApplicationController
 
   def new
     @garage = Garage.new
-    @garage.owner = current_user
     authorize @garage
   end
 
   def create
     @garage = Garage.new(rev_params)
+    @garage.owner = current_user
     authorize @garage
     if @garage.save
-      redirect_to garage_path(@garage)
+      redirect_to garages_path
     else
       render :new
     end
