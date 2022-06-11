@@ -5,6 +5,7 @@
       <div class="row">
         <% if !@bookings_owner.empty? %>
           <% @bookings_owner.each do |booking| %>
+            <% if booking.status == "standby" %>
             <div class="card m-3">
                   <div class="card-title">
                     Garage: <%= booking.garage.title %>
@@ -18,11 +19,16 @@
                     <%= link_to "Rechazar solicitud", decline_path(:id => booking.id), :class => 'btn btn-danger btn-sm' %>
                   </div>
               </div>
+              <% elsif booking.status == 'confirmed' %>
+                <%= "Booking has been confirmed" %>
+              <% else %>
+                <%= "Booking canceled" %>
+            <% end %>
           <% end %>
           <% else %>
           <%= "No tenes solicitudes de booking todavía" %>
         <% end %>
-      <% end %>
+    <% end %>
     </div>
   </div>
   <div class="container" id="my_client_bookings">
