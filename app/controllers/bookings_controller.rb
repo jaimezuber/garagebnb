@@ -37,6 +37,7 @@ class BookingsController < ApplicationController
 
   def update
     if @booking.update(rev_params)
+      flash[:notice] = 'Booking editado'
       redirect_to garage_path(@booking.garage)
     else
       render :edit
