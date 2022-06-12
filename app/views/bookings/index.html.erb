@@ -1,3 +1,6 @@
+<head>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+</head>
 <div class="container">
   <div class="container" id="my_garage_bookings">
     <% if !current_user.garages.empty? %>
@@ -7,12 +10,12 @@
           <% @bookings_owner.each do |booking| %>
             <% if booking.status == "standby" %>
             <div class="card m-3">
-                  <div class="card-title">
+                  <div class="card-title font-weight-bold">
                     Garage: <%= booking.garage.title %>
                   </div>
-                  <div class="card-body">
+                  <div class="card-text">
                     Desde: <%= booking.initial_date%>
-                    Hasta: <%= booking.end_date %>
+                    <br>Hasta: <%= booking.end_date %>
                   </div>
                   <div class="card-footer d-flex">
                     <%= link_to "Aceptar solicitud", accept_path(:id => booking.id), :class => 'btn btn-success btn-sm' %>
@@ -21,28 +24,30 @@
               </div>
               <% elsif booking.status == 'confirmed' %>
                 <div class="card m-3">
-                    <div class="card-title">
+                    <div class="card-title font-weight-bold">
                       Garage: <%= booking.garage.title %>
                     </div>
-                    <div class="card-body">
-                      Desde: <%= booking.initial_date%>
-                      Hasta: <%= booking.end_date %>
+                    <div class="card-text">
+                     Desde: <%= booking.initial_date%>
+                    <br>Hasta: <%= booking.end_date %>
                     </div>
-                    <div class="card-footer d-flex">
+                    <div class="card-footer d-flex justify-content-between">
                       <%= "Booking has been confirmed" %>
+                        <span class="fa fa-check"></span>
                     </div>
                 </div>
               <% else %>
                 <div class="card m-3">
-                    <div class="card-title">
+                    <div class="card-title font-weight-bold">
                       Garage: <%= booking.garage.title %>
                     </div>
-                    <div class="card-body">
-                      Desde: <%= booking.initial_date%>
-                      Hasta: <%= booking.end_date %>
+                    <div class="card-text">
+                    Desde: <%= booking.initial_date%>
+                    <br>Hasta: <%= booking.end_date %>
                     </div>
-                    <div class="card-footer d-flex">
-                      <%= "Booking canceled" %>
+                    <div class="card-footer d-flex justify-content-between">
+                      <%= "Booking has been canceled" %>
+                      <span class="fa fa-window-close"></span>
                     </div>
                 </div>
             <% end %>
@@ -62,7 +67,7 @@
               <div class="card-title">
                 Garage: <%= booking.garage.title %>
               </div>
-              <div class="card-body">
+              <div class="card-text">
                 Desde: <%= booking.initial_date%>
                 Hasta: <%= booking.end_date %>
               </div>
