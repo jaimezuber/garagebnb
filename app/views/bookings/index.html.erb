@@ -76,19 +76,22 @@
                 <br>Hasta: <%= booking.end_date %>
               </div>
               <div class="card-footer d-flex justify-content-between">
-                <%= link_to "Editar booking", edit_booking_path(booking), :class => 'btn btn-outline-dark' %>
                 <% if booking.status == "standby" %>
-                  <p class="pending mt-3"><%= "Pending.." %> </p>
+                    <p class="pending mt-3"><%= "Pending.." %> </p>
+                    <%= link_to "Editar booking", edit_booking_path(booking), :class => 'btn btn-outline-dark' %>
                   <% elsif booking.status == 'confirmed'%>
                     <p class="confirmed mt-3"><%= "Confirmed" %> </p>
                   <% else %>
                     <p class="declined mt-3"><%= "Declined" %> </p>
+                    <%= link_to "Elegir fechas", edit_booking_path(booking), :class => 'btn btn-outline-dark' %>
                 <% end %>
               </div>
             </div>
           <% end %>
         <% else %>
+        <div class="container">
           <%= "No tenes solicitudes de booking todavía" %>
+        </div>
       <% end %>
     </div>
   </div>
