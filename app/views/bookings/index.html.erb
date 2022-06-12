@@ -1,3 +1,6 @@
+<head>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+</head>
 <div class="container">
   <div class="container" id="my_garage_bookings">
     <% if !current_user.garages.empty? %>
@@ -7,12 +10,13 @@
           <% @bookings_owner.each do |booking| %>
             <% if booking.status == "standby" %>
             <div class="card m-3">
-                  <div class="card-title">
+                  <div class="card-title mt-2 d-flex justify-content-between">
                     Garage: <%= booking.garage.title %>
+                    <%= link_to "Ver", booking.garage, :class => 'btn btn-outline-secondary btn-sm' %>
                   </div>
-                  <div class="card-body">
+                  <div class="card-text">
                     Desde: <%= booking.initial_date%>
-                    Hasta: <%= booking.end_date %>
+                    <br>Hasta: <%= booking.end_date %>
                   </div>
                   <div class="card-footer d-flex">
                     <%= link_to "Aceptar solicitud", accept_path(:id => booking.id), :class => 'btn btn-success btn-sm' %>
@@ -21,28 +25,32 @@
               </div>
               <% elsif booking.status == 'confirmed' %>
                 <div class="card m-3">
-                    <div class="card-title">
+                    <div class="card-title mt-2 d-flex justify-content-between">
                       Garage: <%= booking.garage.title %>
+                      <%= link_to "Ver", booking.garage , :class => 'btn btn-outline-secondary btn-sm' %>
                     </div>
-                    <div class="card-body">
-                      Desde: <%= booking.initial_date%>
-                      Hasta: <%= booking.end_date %>
+                    <div class="card-text">
+                     Desde: <%= booking.initial_date%>
+                    <br>Hasta: <%= booking.end_date %>
                     </div>
-                    <div class="card-footer d-flex">
+                    <div class="card-footer d-flex justify-content-between">
                       <%= "Booking has been confirmed" %>
+                        <span class="fa fa-check"></span>
                     </div>
                 </div>
               <% else %>
                 <div class="card m-3">
-                    <div class="card-title">
+                    <div class="card-title mt-2 d-flex justify-content-between">
                       Garage: <%= booking.garage.title %>
+                      <%= link_to "Ver", booking.garage, :class => 'btn btn-outline-secondary btn-sm' %>
                     </div>
-                    <div class="card-body">
-                      Desde: <%= booking.initial_date%>
-                      Hasta: <%= booking.end_date %>
+                    <div class="card-text">
+                    Desde: <%= booking.initial_date%>
+                    <br>Hasta: <%= booking.end_date %>
                     </div>
-                    <div class="card-footer d-flex">
-                      <%= "Booking canceled" %>
+                    <div class="card-footer d-flex justify-content-between">
+                      <%= "Booking has been canceled" %>
+                      <span class="fa fa-window-close"></span>
                     </div>
                 </div>
             <% end %>
@@ -59,15 +67,23 @@
       <% if !@bookings_client.empty? %>
           <% @bookings_client.each do |booking| %>
             <div class="card m-3">
-              <div class="card-title">
+              <div class="card-title mt-2 d-flex justify-content-between">
                 Garage: <%= booking.garage.title %>
+                <%= link_to "Ver", booking.garage , :class => 'btn btn-outline-secondary btn-sm' %>
               </div>
-              <div class="card-body">
+              <div class="card-text">
                 Desde: <%= booking.initial_date%>
-                Hasta: <%= booking.end_date %>
+                <br>Hasta: <%= booking.end_date %>
               </div>
-              <div class=“card-footer”>
+              <div class="card-footer d-flex justify-content-between">
                 <%= link_to "Editar booking", edit_booking_path(booking), :class => 'btn btn-outline-dark' %>
+                <% if booking.status == "standby" %>
+                  <p class="pending mt-3"><%= "Pending.." %> </p>
+                  <% elsif booking.status == 'confirmed'%>
+                    <p class="confirmed mt-3"><%= "Confirmed" %> </p>
+                  <% else %>
+                    <p class="declined mt-3"><%= "Declined" %> </p>
+                <% end %>
               </div>
             </div>
           <% end %>

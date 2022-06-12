@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2022_06_08_175950) do
   create_table "bookings", force: :cascade do |t|
     t.bigint "client_id", null: false
     t.bigint "garage_id", null: false
-    t.string "status"
+    t.string "status", default: "standby"
     t.date "initial_date"
     t.date "end_date"
     t.datetime "created_at", precision: 6, null: false
