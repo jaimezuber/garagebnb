@@ -18,6 +18,7 @@ class GaragesController < ApplicationController
     @garage.owner = current_user
     authorize @garage
     if @garage.save
+      flash[:notice] = 'Garage creado'
       redirect_to garages_path
     else
       render :new
@@ -28,6 +29,7 @@ class GaragesController < ApplicationController
 
   def update
     if @garage.update(rev_params)
+      flash[:notice] = 'Garage editado'
       redirect_to garage_path(@garage)
     else
       render :edit
