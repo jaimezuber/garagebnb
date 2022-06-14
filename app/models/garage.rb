@@ -6,7 +6,7 @@ class Garage < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_title_and_description,
-    against: [ :title  ],
+    against: [ :title, :location ],
     using: {
       tsearch: { prefix: true }
     }
