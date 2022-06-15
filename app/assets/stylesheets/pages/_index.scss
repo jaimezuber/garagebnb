@@ -7,25 +7,41 @@
   text-decoration: none;
 }
 
+
 .row {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin: 0 auto;
+
+}
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 }
 
 .card {
-  width: 422px;
+  width: 355px;
 }
 
 .card-img-top {
-  display: d-flex;
-
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .card-title {
   font-weight: bold;
   font-size: large;
+  color: black;
+}
+
+.boton {
+  margin-bottom: 30px;
+}
+
+.card-text {
+  color: black;
 }
 
 .confirmed {
