@@ -6,6 +6,6 @@ class Booking < ApplicationRecord
   scope :confirmed, -> { where(status: "confirmed") }
 
   def confirmed?
-    this.status == 'confirmed'
+    self.status == 'confirmed'
   end
 end
