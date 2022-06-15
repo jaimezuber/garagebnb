@@ -4,4 +4,8 @@ class Booking < ApplicationRecord
   has_many :reviews
 
   scope :confirmed, -> { where(status: "confirmed") }
+
+  def confirmed?
+    this.status == 'confirmed'
+  end
 end
