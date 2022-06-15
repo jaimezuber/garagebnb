@@ -3,13 +3,9 @@
     <h1 class="text-center">Compartí tu garage y ganemos todos</h1>
   </div>
   <div class="container d-flex justify-content-end">
-    <%= form_tag garages_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control form-inline",
-        placeholder: "Buscá garages"
-      %>
-      <%= submit_tag "", class: "btn btn-indigo btn-rounded btn-sm my-0 waves-effect waves-light" %>
+    <%= form_tag(garages_path, method: :get) do %>
+      <%= text_field_tag :query, params[:query], autocomplete: 'off', placeholder: "Buscar" %>
+      <%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
     <% end %>
   </div>
   <div class="d-flex justify-content-center">
