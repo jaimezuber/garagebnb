@@ -3,9 +3,13 @@
     <h1 class="text-center">Compartí tu garage y ganemos todos</h1>
   </div>
   <div class="container d-flex justify-content-end">
-    <%= form_tag(garages_path, method: :get) do %>
-      <%= text_field_tag :query, params[:query], autocomplete: 'off', placeholder: "Buscar" %>
-      <%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
+    <%= form_tag garages_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Buscá garages"
+      %>
+      <%= submit_tag "", class: "btn btn-indigo btn-rounded btn-sm my-0 waves-effect waves-light" %>
     <% end %>
   </div>
   <div class="d-flex justify-content-center">
@@ -18,10 +22,9 @@
     <% @garages.each do |garage| %>
       <div class=“col-sm-3”>
         <div class=card-deck>
-          <div class="d-inline justify-content-center">
+          <div class="d-inline justify-content-center tarjeta">
             <%= link_to garage_path(garage) do %>
-
-              <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+              <div class="card shadow-sm p-3 mb-5">
               <div class="card-img-top">
                 <%= cl_image_tag(garage.photo.key,  height: 200, width: 300, crop: :fill) %>
               </div>
