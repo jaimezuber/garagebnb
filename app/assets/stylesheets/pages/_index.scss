@@ -20,6 +20,13 @@
   flex-direction: row;
 }
 
+.author{
+  font-weight: lighter;
+  font-style: oblique;
+  color: grey;
+  display: flex;
+  text-justify: center;
+}
 
 .card {
   width: 355px;

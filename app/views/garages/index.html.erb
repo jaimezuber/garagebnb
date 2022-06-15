@@ -13,7 +13,7 @@
     <% end %>
   </div>
   <div class="d-flex justify-content-center">
-      <%= link_to "Creá tu garage!", new_garage_path, :class => 'btn btn-outline-primary' %>
+      <%= link_to "Creá tu garage!", new_garage_path, :class => 'btn btn-outline-secondary' %>
   </div>
 </div>
 
@@ -32,7 +32,7 @@
                   <div class="d-flex justify-content-between">
                     <h4 class="card-title"><%= garage.title %></h4>
                     <p class="card-text">
-                      Ubicación: <%= garage.location %>
+                      En: <%= garage.location %>
                     </p>
                     <% if policy(garage).show? %>
                       <%= link_to "Ver garage", garage_path(garage), :class => 'btn btn-outline-dark btn-sm boton' %>
@@ -40,9 +40,11 @@
                   </div>
                   <div class="card-footer">
                     <div class="d-flex justify-content-around">
-                      <div>Precio: $<%= garage.price %></div>
+                      <div>$<%= garage.price %>/hs</div>
                       <div>Dueño: <%= garage.owner.full_name %></div>
+                      <br>
                     </div>
+                    <small class="author">Submitted <%= time_ago_in_words(garage.created_at) %> ago</small>
                   </div>
                 </div>
               </div> <!-- aca termina el card -->
