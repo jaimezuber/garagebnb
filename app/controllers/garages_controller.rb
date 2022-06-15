@@ -4,6 +4,13 @@ class GaragesController < ApplicationController
 
   def index
     @garages = Garage.all
+    # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+      @markers = @garages.geocoded.map do |garages|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
+     end
   end
 
   def show; end
