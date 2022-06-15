@@ -1,2 +1,21 @@
-<h1>Garages#new</h1>
-<p>Find me in app/views/garages/new.html.erb</p>
+  <div class="container mt-4">
+    <div class="row d-flex justify-content-center">
+      <div class="col-6">
+        <div class="garage-form">
+          <h1>Creá tu garage</h1>
+          <div class="mt-3">
+            <%= simple_form_for @garage do |f| %>
+            <%= f.input :title %>
+            <%= f.input :price %>
+            <%= f.input :location %>
+            <%= f.input :photo, as: :file %>
+            <div class="d-flex justify-content-center">
+              <%= f.submit "Submit Booking", class: 'btn btn-primary' %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
