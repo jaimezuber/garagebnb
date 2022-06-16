@@ -4,15 +4,6 @@ class GaragesController < ApplicationController
 
   def index
     @garages = policy_scope(Garage).order(created_at: :desc)
-    # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
-      @markers = @garages.geocoded.map do |garages|
-      {
-        lat: flat.latitude,
-        lng: flat.longitude
-      }
-     end
-
-
     # if params[:query].present?
       # @garages = Garage.search_by_title_and_description(params[:query])
    # else
@@ -20,7 +11,12 @@ class GaragesController < ApplicationController
     # end
   end
 
-  def show; end
+  def show
+    @marker = [{
+                lat: @garage.latitude,
+                lng: @garage.longitude
+              }]
+  end
 
   def new
     @garage = Garage.new
