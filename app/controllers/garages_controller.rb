@@ -4,11 +4,11 @@ class GaragesController < ApplicationController
 
   def index
     @garages = policy_scope(Garage).order(created_at: :desc)
-    # if params[:query].present?
-      # @garages = Garage.search_by_title_and_description(params[:query])
-   # else
-    #  @garages = Garage.all
-    # end
+    if params[:query].present?
+      @garages = Garage.search_by_title_and_description(params[:query])
+    else
+      @garages = Garage.all
+    end
   end
 
   def show
