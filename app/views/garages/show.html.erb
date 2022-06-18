@@ -4,8 +4,10 @@
     <div class="col-8">
       <div class="card shadow-sm pt-3" style="width: 632px; ">
         <div class="card-img-top">
+        <% if @garage.photo.attached? %>
           <%= cl_image_tag(@garage.photo.key,
           width: 600, height: 400, crop: :fill) %>
+        <% end %>
         </div>
         <div class="card-body">
           <h3><%= @garage.title %></h3>
