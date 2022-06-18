@@ -1,12 +1,12 @@
 <br><br>
 <div class="container">
-  <div class="row">
+  <div class="row d-flex">
     <div class="col-8">
-      <div class="card shadow-sm pt-3" style="width: 632px; ">
+      <div class="card shadow-sm pt-3 d-flex jusftify-content-center" style="width: 832px; ">
         <div class="card-img-top">
         <% if @garage.photo.attached? %>
           <%= cl_image_tag(@garage.photo.key,
-          width: 600, height: 400, crop: :fill) %>
+          width: 800, height: 400, crop: :fill) %>
         <% end %>
         </div>
         <div class="card-body">
@@ -26,7 +26,7 @@
               <% if @bookings != [] %>
                 <p><%= link_to "Reservar otra fecha", new_garage_booking_path(@garage), class: "btn btn-primary" %>Ya tienes una reserva!</p>
               <% else %>
-              <%= link_to "Reservar", new_garage_booking_path(@garage), class: "btn btn-primary" %>
+              <%= link_to "Reservar", new_garage_booking_path(@garage), class: "btn btn-outline-secondary btn-lg" %>
               <% end %>
             <% else %>
               <%= link_to "Sign Up to Make a Reservation", new_user_registration_path, :class => 'btn btn-primary' %>
@@ -36,15 +36,16 @@
       </div>
     </div>
     <div class="col-3">
-      <div class="">
-        <div class="card shadow-sm pt-3" style="width: 632px; height:587px; ">
+        <div class="card shadow-sm" style="width: 300px; height:365px; ">
           <div class="card-img-top">
-            <div style="width: 600px; height: 550px;"
+            <div style="width: 300px; height: 300px;"
               data-controller="mapbox"
               data-mapbox-markers-value="<%= @marker.to_json %>"
               data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
             </div>
-          </div>
+        </div>
+        <div class="card-footer">
+          <%= @garage.location %>
         </div>
       </div>
 
