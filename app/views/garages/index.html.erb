@@ -1,5 +1,7 @@
 <div class=“banner-content”>
-  <h1 class="text-center">Compartí tu garage y ganemos todos</h1>
+  <div class="container">
+    <h1 class="text-center">Compartí tu garage y ganemos todos</h1>
+  </div>
   <div class="container d-flex justify-content-end">
     <%= form_tag garages_path, method: :get do %>
       <%= text_field_tag :query,
@@ -7,41 +9,43 @@
         class: "form-control",
         placeholder: "Buscá garages"
       %>
-      <%= submit_tag "Buscar", class: "btn btn-primary" %>
+      <%= submit_tag "", class: "btn btn-indigo btn-rounded btn-sm my-0 waves-effect waves-light" %>
     <% end %>
   </div>
   <div class="d-flex justify-content-center">
-      <%= link_to "Creá tu garage!", new_garage_path, :class => 'btn btn-primary btn-lg' %>
+      <%= link_to "Creá tu garage!", new_garage_path, :class => 'btn btn-outline-secondary' %>
   </div>
 </div>
 
-<div class = “container”>
+<div class = "container cards">
   <div class="row">
     <% @garages.each do |garage| %>
       <div class=“col-sm-3”>
         <div class=card-deck>
-          <div class="d-inline">
+          <div class="d-inline justify-content-center tarjeta">
             <%= link_to garage_path(garage) do %>
-
-              <div class="card">
+              <div class="card shadow-sm pt-3 ">
               <div class="card-img-top">
-                <%= cl_image_tag(garage.photo.key,  height: 300, width: 400, crop: :fill) %>
+                <%= cl_image_tag(garage.photo.key,  height: 200, width: 300, crop: :fill) %>
               </div>
                 <div class="card-body">
-                  <h4 class="card-title"><%= garage.title %></h4>
-                  <p class="card-text">
-                    Ubicación: <%= garage.location %>
-                  </p>
-                  <div class= "buttons"></div>
-                  <% if policy(garage).show? %>
-                    <%= link_to "Ver garage", garage_path(garage), :class => 'btn btn-outline-dark' %>
-                  <% end %>
+                  <div class="d-flex justify-content-between">
+                    <h4 class="card-title"><%= garage.title %></h4>
+                    <p class="card-text">
+                      En: <%= garage.location %>
+                    </p>
+                    <% if policy(garage).show? %>
+                      <%= link_to "Ver garage", garage_path(garage), :class => 'btn btn-outline-dark btn-sm boton' %>
+                    <% end %>
+                  </div>
+                  </div>
                   <div class="card-footer">
                     <div class="d-flex justify-content-around">
-                      <div>Precio: $<%= garage.price %></div>
+                      <div>$<%= garage.price %>/hs</div>
                       <div>Dueño: <%= garage.owner.full_name %></div>
+                      <br>
                     </div>
-                  </div>
+                    <small class="author d-flex justify-content-end">Submitted <%= time_ago_in_words(garage.created_at) %> ago</small>
                 </div>
               </div> <!-- aca termina el card -->
 
