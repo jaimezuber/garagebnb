@@ -1,6 +1,6 @@
 class Garage < ApplicationRecord
   belongs_to :owner, class_name: "User", foreign_key: "owner_id"
-  has_many :bookings, dependent: :destroy
+  has_many :bookings, dependent: :destroy #asi si borro garage que tiene booking, me deja borrarlo.
 
   has_one_attached :photo
 

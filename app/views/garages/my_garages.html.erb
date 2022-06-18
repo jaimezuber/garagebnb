@@ -9,7 +9,9 @@
 
               <div class="card">
               <div class="card-img-top">
-                <%= cl_image_tag(garage.photo.key,  height: 300, width: 400, crop: :fill) %>
+                <% if garage.photo.attached? %>
+                  <%= cl_image_tag(garage.photo.key,  height: 300, width: 400, crop: :fill) %>
+                <% end %>
               </div>
                 <div class="card-body">
                   <h4 class="card-title"><%= garage.title %></h4>
