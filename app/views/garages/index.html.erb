@@ -22,7 +22,7 @@
     <% @garages.each do |garage| %>
       <div class=“col-sm-3”>
         <div class=card-deck>
-          <div class="d-inline justify-content-center tarjeta">
+          <div class="d-inline justify-content-center tarjeta" id="garage-<%=garage.id%>">
             <%= link_to garage_path(garage) do %>
               <div class="card shadow-sm pt-3 ">
               <div class="card-img-top">

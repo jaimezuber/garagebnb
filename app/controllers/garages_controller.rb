@@ -29,7 +29,7 @@ class GaragesController < ApplicationController
     authorize @garage
     if @garage.save
       flash[:notice] = 'Garage creado'
-      redirect_to garages_path
+      redirect_to garages_path(anchor: "garage-#{@garage.id}")
     else
       render :new
     end
