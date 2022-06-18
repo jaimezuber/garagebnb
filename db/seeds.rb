@@ -23,10 +23,10 @@ puts 'Failed creating user' if jaime.id.nil?
 
 puts 'Creating garage'
 
-garage_joel = Garage.create(title: 'Garage de Joel', owner: joel, location: 'Quilmes', price: 10)
-garage_maxi = Garage.create(title: 'Garage de Maxi', owner: maxi, location: 'Palermo', price: 8)
-garage_jaime = Garage.create(title: 'Garage de Jaime', owner: jaime, location: 'San Isidro', price: 25)
-garage_luca = Garage.create(title: 'Garage de Luca', owner: luca, location: 'Pilar', price: 40)
+garage_joel = Garage.create(title: 'Garage de Joel', owner: joel, location: "o'higgins 45, Ciudadela", price: 10)
+garage_maxi = Garage.create(title: 'Garage de Maxi', owner: maxi, location: 'Av.Santa Fe 2862, capital federal', price: 8)
+garage_jaime = Garage.create(title: 'Garage de Jaime', owner: jaime, location: 'ada elfein 2737, San Isidro', price: 25)
+garage_luca = Garage.create(title: 'Garage de Luca', owner: luca, location: 'km 38.5 panamerica Ramal pilar, buenos aires', price: 40)
 
 puts 'Attaching photos'
 
